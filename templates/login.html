@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    body{
+        background: url(https://c4.wallpaperflare.com/wallpaper/586/603/742/minimalism-4k-for-mac-desktop-wallpaper-preview.jpg) no-repeat; 
+        background-size: 900px 500px;
+        background-position-x: 180px;
+        background-position-y: 50px;
+    }
+    .log-form{width: 210px;}
+</style>
+<section class="log-form">
+    <div class="container">
+        <div class="mb-3 row">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input style="width: 250px;" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+          </div>
+          <div class="mb-3 row">
+            <label for="passw" class="form-label">Password</label>
+            <input style="width: 250px;" type="password" class="form-control" name="passw" id="FormPassw" placeholder="Пароль">
+          </div>
+          <div class="mb-3 row">
+              <button style="width: 150px;" type="button" class="btn btn-outline-primary">Войти</button>
+          </div>   
+    </div>
+</section>
+    
+{% endblock %}
