@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container">
+<div class="container-main">
     <div class="row">
       <div class="col">
-        1 из 2
+        <h2 class="maint">Hello! It's me!</h2>
+        <p class="main">
+            <ul class="main">
+                <li><a class="regref" href="/register">Зарегистрироваться</a></li>
+                <li><a class="authref" href="/login">Войти</a></li>
+            </ul>
+        </p>
       </div>
       <div class="col">
-        2 из 2
+        <img src="https://miro.medium.com/max/1400/1*J9wJ3CwvtFXJ4mmyzcwo8A.jpeg" alt="hello" width="85%" height="85%">
       </div>
     </div>
 {% endblock %}
