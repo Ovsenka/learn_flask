@@ -10,19 +10,21 @@
     .log-form{width: 210px;}
 </style>
 <section class="log-form">
+    <form method="POST">
     <div class="container">
         <div class="mb-3 row">
             <label for="exampleFormControlInput1" class="form-label">Email address</label>
-            <input style="width: 250px;" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            <input style="width: 250px;" type="text" class="form-control" name="username" id="exampleFormControlInput1" placeholder="Username">
           </div>
           <div class="mb-3 row">
             <label for="passw" class="form-label">Password</label>
             <input style="width: 250px;" type="password" class="form-control" name="passw" id="FormPassw" placeholder="Пароль">
-          </div>
+        </div>
           <div class="mb-3 row">
-              <button style="width: 150px;" type="button" class="btn btn-outline-primary">Войти</button>
+            <button style="width: 150px;" type="submit" class="btn btn-outline-primary">Войти</button>
           </div>   
-    </div>
+    </div>    
+    </form>
 </section>
     
 {% endblock %}

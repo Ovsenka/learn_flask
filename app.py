@@ -1,5 +1,5 @@
 from distutils.log import debug
-from flask import Flask, render_template, flash, session
+from flask import Flask, render_template, flash, session, request, url_for, redirect, abort
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "12334823u5hdnkjxbnmvbi23u23u4235h235k"
@@ -14,18 +14,30 @@ def contact():
     return render_template("contact.html", title="Contact")
 
 @app.route("/register")
-def register():
+def regist():
     return render_template("register.html", title="Регистрация")
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
+    if request.method == "POST" and request.form['username'] == "testuser" and request.form['passw'] == "111":
+        session['userLogged'] = request.form['username']
+        return redirect(url_for("profile", username=session["userLogged"]))
+    elif "userLogged" in session:
+        return redirect(url_for("profile", username=session["userLogged"]))
     return render_template("login.html", title="Войти")
+    
+@app.route("/profile/<username>")
+def profile(username):
+    if "userLogged" not in session or session["userLogged"] != username:
+        abort(401)
+    return render_template("profile.html", user=username)
 
-'''
+
 @app.errorhandler(404)
-def notfound():
+def notfound(err):
     return render_template("error404.html", title="Страница не найдена")
 
+'''
 @app.errorhandler(500)
 def er():
     return "LOL"'''
