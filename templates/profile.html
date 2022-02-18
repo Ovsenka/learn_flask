@@ -3,4 +3,9 @@
     <div class="container">
         Профиль пользователя: {{ user }}
     </div>
+    <div class="container-exit">
+        <form action="/profile/logout" method="POST" class="d-flex my-2 my-lg-0">
+            <button type="submit" class="btn btn-outline-danger my-2 my-sm-0">Выйти</button>
+        </form>
+    </div>
 {% endblock %}

@@ -4,33 +4,43 @@ from flask import Flask, render_template, flash, session, request, url_for, redi
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "12334823u5hdnkjxbnm@#$!@!vbi2/ggr/24@#$@#$3u23u4235h235k"
 
+users = []
 
 @app.route("/")
 def main():
+    print(session)
     return render_template("practice.html", title="Hello")
 
 @app.route("/contact")
 def contact():
     return render_template("contact.html", title="Contact")
 
-@app.route("/register")
-def regist():
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST" and request.form["psw"] == request.form["psw-repeat"]:
+        print("YES")
+        session['user_logged'] = request.form['username']
+        print(session)
+        users.append((request.form['username'], request.form["psw"]))
+        return redirect(url_for("profile", username=session["user_logged"]))
+    elif "user_logged" in session:
+        return redirect(url_for("profile", username=session["user_logged"]))
     return render_template("register.html", title="Регистрация")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    if request.method == "POST" and request.form['username'] == "testuser" and request.form['psw'] == "111":
-        session['userLogged'] = request.form['username']
-        return redirect(url_for("profile", username=session["userLogged"]))
-    elif "userLogged" in session:
-        return redirect(url_for("profile", username=session["userLogged"]))
+    if request.method == "POST" and request.form['username'] == "1" and request.form['psw'] == "111":
+        session['user_logged'] = request.form['username']
+        return redirect(url_for("profile", username=session["user_logged"]))
+    elif "user_logged" in session:
+        return redirect(url_for("profile", username=session["user_logged"]))
     return render_template("login.html", title="Войти")
     
 @app.route("/profile/<username>")
 def profile(username):
-    if "userLogged" not in session or session["userLogged"] != username:
+    if "user_logged" not in session or session["user_logged"] != username:
         abort(401)
-    return render_template("profile.html", user=username)
+    return render_template("profile.html", user=username, is_logged=True)
 
 
 @app.errorhandler(404)
