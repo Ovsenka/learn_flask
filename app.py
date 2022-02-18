@@ -2,7 +2,7 @@ from distutils.log import debug
 from flask import Flask, render_template, flash, session, request, url_for, redirect, abort
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "12334823u5hdnkjxbnmvbi23u23u4235h235k"
+app.config["SECRET_KEY"] = "12334823u5hdnkjxbnm@#$!@!vbi2/ggr/24@#$@#$3u23u4235h235k"
 
 
 @app.route("/")
@@ -19,7 +19,7 @@ def regist():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    if request.method == "POST" and request.form['username'] == "testuser" and request.form['passw'] == "111":
+    if request.method == "POST" and request.form['username'] == "testuser" and request.form['psw'] == "111":
         session['userLogged'] = request.form['username']
         return redirect(url_for("profile", username=session["userLogged"]))
     elif "userLogged" in session:
@@ -36,11 +36,6 @@ def profile(username):
 @app.errorhandler(404)
 def notfound(err):
     return render_template("error404.html", title="Страница не найдена")
-
-'''
-@app.errorhandler(500)
-def er():
-    return "LOL"'''
 
 if __name__ == "__main__":
     app.run()
