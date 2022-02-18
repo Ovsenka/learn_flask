@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 <style>
-    
     .log-form{width: 210px;}
 </style>
 <section class="log-form">
     <form method="POST">
     <div class="container">
         <div class="mb-3 row">
-            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <label for="exampleFormControlInput1" class="form-label">Username</label>
             <input style="width: 250px;" type="text" class="form-control" name="username" id="exampleFormControlInput1" placeholder="Username">
           </div>
           <div class="mb-3 row">
@@ -16,7 +15,7 @@
             <input style="width: 250px;" type="password" class="form-control" name="psw" id="FormPassw" placeholder="Пароль">
         </div>
           <div class="mb-3 row">
-            <button style="width: 150px;" type="submit" class="btn btn-outline-primary">Войти</button>
+            <button style="width: 150px; margin-left: 30px;" type="submit" class="btn btn-outline-primary">Войти</button>
           </div>   
     </div>    
     </form>
