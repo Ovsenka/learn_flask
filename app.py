@@ -8,7 +8,7 @@ users = []
 
 @app.route("/")
 def main():
-    print(session)
+    print(users)
     return render_template("practice.html", title="Hello")
 
 @app.route("/index")
@@ -34,9 +34,11 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    if request.method == "POST" and request.form['username'] == "1" and request.form['psw'] == "111":
-        session['user_logged'] = request.form['username']
-        return redirect(url_for("profile", username=session["user_logged"]))
+    if request.method == "POST":
+        for user in users:
+            if request.form['username'] == user[0]:
+                session['user_logged'] = request.form['username']
+                return redirect(url_for("profile", username=session["user_logged"]))
     elif "user_logged" in session:
         return redirect(url_for("profile", username=session["user_logged"]))
     return render_template("login.html", title="Войти")
@@ -45,7 +47,7 @@ def login():
 def profile(username):
     if "user_logged" not in session or session["user_logged"] != username:
         abort(401)
-    return render_template("profile.html", user=username, is_logged=True)
+    return render_template("profile.html", user=username, title=username, is_logged=True)
 
 @app.route("/logout", methods=["POST", "GET"])
 def logout():
