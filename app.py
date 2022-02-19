@@ -11,6 +11,11 @@ def main():
     print(session)
     return render_template("practice.html", title="Hello")
 
+@app.route("/index")
+def index():
+    print(session)
+    return render_template("practice.html", title="Hello")
+
 @app.route("/contact")
 def contact():
     return render_template("contact.html", title="Contact")
@@ -18,7 +23,7 @@ def contact():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST" and request.form["psw"] == request.form["psw-repeat"]:
-        print("YES")
+        print(request.form["optionsRadios"])
         session['user_logged'] = request.form['username']
         print(session)
         users.append((request.form['username'], request.form["psw"]))
@@ -41,6 +46,12 @@ def profile(username):
     if "user_logged" not in session or session["user_logged"] != username:
         abort(401)
     return render_template("profile.html", user=username, is_logged=True)
+
+@app.route("/logout", methods=["POST", "GET"])
+def logout():
+    if "user_logged" in session:
+        del session["user_logged"]
+        return redirect(url_for("index"))
 
 
 @app.errorhandler(404)
