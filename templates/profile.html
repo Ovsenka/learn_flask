@@ -1,8 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="container">
-        <b>Профиль пользователя:</b> {{ user }}
-        <p><b>Пол:</b> {{ sex }}</p>
+    <style>
+        .container-profile{
+            margin-top: 50px;
+            margin-left: 150px;
+        }
+        .container-info{
+            margin-top: 30px; 
+        }
+
+    </style>
+
+    <div class="container-profile">
+        <div class="col-3 ">
+            <img width="85%" height="85%" src="https://cdn.mos.cms.futurecdn.net/C9JVYkqCELkdERaqd9gFbj-970-80.jpg.webp" alt="photo-profile">
+        </div>
+        <div class="container-info">
+            <div class="col-3 ">
+                <b>Профиль пользователя:</b> {{ user }}
+            </div>
+            <div class="col-3 ">
+                {% if sex == 'man' %}
+                    <p><b>Пол:</b> мужской</p>
+                {% else %}
+                    <p><b>Пол:</b> женский</p>
+                {% endif %}
+            </div>
+        </div>
     </div>
     
 {% endblock %}
