@@ -22,7 +22,7 @@ def index():
         is_logged = True
     else:
         is_logged = False
-    return render_template("practice.html", title="Hello", is_logged=True)
+    return render_template("practice.html", title="Hello", is_logged=is_logged)
 
 @app.route("/contact")
 def contact():
@@ -41,10 +41,10 @@ def register():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        for user in users:
-            if request.form['username'] == user[0]:
-                session['user_logged'] = request.form['username']
-                return redirect(url_for("profile", username=session["user_logged"]))
+        print(users)
+        if users[request.form['username']][0] == request.form['psw']:
+            session['user_logged'] = request.form['username']
+            return redirect(url_for("profile", username=session["user_logged"]))
     elif "user_logged" in session:
         return redirect(url_for("profile", username=session["user_logged"]))
     return render_template("login.html", title="Войти")
