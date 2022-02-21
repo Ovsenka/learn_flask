@@ -9,12 +9,20 @@ users = {}
 @app.route("/")
 def main():
     print(users)
-    return render_template("practice.html", title="Hello")
+    if "user_logged" in session:
+        is_logged = True
+    else:
+        is_logged = False
+    return render_template("practice.html", title="Hello", is_logged=is_logged)
 
 @app.route("/index")
 def index():
     print(session)
-    return render_template("practice.html", title="Hello")
+    if "user_logged" in session:
+        is_logged = True
+    else:
+        is_logged = False
+    return render_template("practice.html", title="Hello", is_logged=True)
 
 @app.route("/contact")
 def contact():

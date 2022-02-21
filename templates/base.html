@@ -40,12 +40,17 @@
           <li class="nav-item">
             <a class="nav-link" href="#">О сайте</a>
           </li>
-         
         </ul>
-          <form class="d-flex my-2 my-lg-0">
-            <a href="/login"><button type="button" class="btn btn-outline-dark my-2 my-sm-0">Войти</button></a>
-            <a href="/register"><button type="button" class="btn btn-outline-success my-2 my-sm-0">Регистрация</button></a>
-          </form>
+        {% if is_logged %}
+        <form action="/logout" method="POST" class="d-flex my-2 my-lg-0">
+          <button type="submit" class="btn btn-outline-danger my-2 my-sm-0">Выйти</button>
+        </form>
+        {% else %}
+        <form class="d-flex my-2 my-lg-0">
+          <a href="/login"><button type="button" class="btn btn-outline-dark my-2 my-sm-0">Войти</button></a>
+          <a href="/register"><button type="button" class="btn btn-outline-success my-2 my-sm-0">Регистрация</button></a>
+        </form>
+        {% endif %}
       </div>
     </div>
   </nav>
