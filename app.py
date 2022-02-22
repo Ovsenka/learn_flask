@@ -28,6 +28,10 @@ def index():
 def contact():
     return render_template("contact.html", title="Contact")
 
+@app.route("/about")
+def about():
+    return render_template("about.html", title="о сайте")
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST" and request.form["psw"] == request.form["psw-repeat"]:
