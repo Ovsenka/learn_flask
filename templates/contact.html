@@ -1,15 +1,42 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h3>Contact us</h>
-    {% for msg in get_flashed_messages() %}
-        <h4><div class="flash">{{ msg }}</div></h4>
-    {% endfor %}
-    <form action="contact" method="post">
-        <label for="name">Enter your name</label>
-        <input type="text" name="name" value="" required>
-        <label for="message">Enter your question</label>
-        <input type="text" name="message" value="" required>
-        <input type="submit" value="Submit">
-    </form>
+    <style>
+        .head{
+            margin-top: 50px;
+            margin-left: 150px;
+        }
+        .contact{
+            margin-top: 75px;
+        }
+    </style>
+    
+    <div class="container-page">
+        <div class="head">
+            <h3>Contact us</h>
+        </div>
+        {% for msg in get_flashed_messages() %}
+            <h4><div class="flash">{{ msg }}</div></h4>
+        {% endfor %}
+    
+        <section class="contact">
+            <div class="container">
+                <form action="contact" method="post">
+                    <p>
+                        <label for="name">Имя: </label>
+                        <input style="margin-left:23px;" type="text" name="name" value="" required>
+                    </p>
+                
+                    <p>
+                        <label for="message">Вопрос: </label>
+                        <input type="text" name="message" value="" required>
+                    </p>
+                    <button type="submit" class="btn btn-outline-secondary">Отправить</button>
+                    
+                </form>
+            </div>  
+        </section>
+    </div>
+
+    
 
 {% endblock %}
