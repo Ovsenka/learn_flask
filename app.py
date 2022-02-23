@@ -36,7 +36,7 @@ def about():
 def register():
     if request.method == "POST" and request.form["psw"] == request.form["psw-repeat"]:
         session['user_logged'] = request.form['username']
-        users[request.form['username']] = ( request.form["psw"], request.form["optionsRadios"] )
+        users[request.form['username']] = ( request.form["psw"], request.form["optionsRadios"], request.form["age"])
         return redirect(url_for("profile", username=session["user_logged"]))
     elif "user_logged" in session:
         return redirect(url_for("profile", username=session["user_logged"]))
@@ -57,7 +57,7 @@ def login():
 def profile(username):
     if "user_logged" not in session or session["user_logged"] != username:
         abort(401)
-    return render_template("profile.html", user=username, sex=users[session["user_logged"]][1], title=username, is_logged=True)
+    return render_template("profile.html", user=username, sex=users[session["user_logged"]][1], age=users[session["user_logged"]][2], title=username, is_logged=True)
 
 @app.route("/logout", methods=["POST", "GET"])
 def logout():

@@ -16,15 +16,18 @@
             <img width="85%" height="85%" src="https://cdn.mos.cms.futurecdn.net/C9JVYkqCELkdERaqd9gFbj-970-80.jpg.webp" alt="photo-profile">
         </div>
         <div class="container-info">
-            <div class="col-3 ">
+            <div class="user">
                 <b>Профиль пользователя:</b> {{ user }}
             </div>
-            <div class="col-3 ">
+            <div class="sex">
                 {% if sex == 'man' %}
-                    <p><b>Пол:</b> мужской</p>
+                    <b>Пол:</b> мужской
                 {% else %}
-                    <p><b>Пол:</b> женский</p>
+                    <b>Пол:</b> женский
                 {% endif %}
+            </div>
+            <div class="age">
+                <b>Возраст:</b> {{ age }}
             </div>
         </div>
     </div>
