@@ -69,6 +69,31 @@ a {
     text-align: center;
 }
 
+input[type="number"]:invalid+span:after {
+
+content: '✖';
+
+padding-left: 5px;
+
+color: red;
+
+}
+
+
+
+input[type="number"]:valid+span:after {
+
+content: '✓';
+
+padding-left: 5px;
+
+color: green;
+
+}
+.pswrd{
+    margin-top: 30px;
+}
+
 </style>
 
 <form method="POST">
@@ -93,13 +118,20 @@ a {
                 Женский
             </label>
         </p>
-        
+    
+        <label for="age"><b>Возраст:</b></label>
+        <input type="number" step="1" min="7" max="150" name="age" id="age" required>
+        <span></span>
+    
+      <p class="pswrd">
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+      </p>
   
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-  
-      <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+      <p class="pswrd">
+        <label for="psw-repeat"><b>Repeat Password</b></label>
+        <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+      </p>
       <hr>
   
       <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
