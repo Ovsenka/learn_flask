@@ -5,6 +5,7 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = "12334823u5hdnkjxbnm@#$!@!vbi2/ggr/24@#$@#$3u23u4235h235k"
 
 users = {}
+questions = []
 
 @app.route("/")
 def main():
@@ -67,7 +68,9 @@ def logout():
 
 @app.route("/contact", methods=["POST"])
 def ask():
+    questions.append( (request.form["name"], request.form["email"], request.form["message"]) )
     flash("Вопрос был отправлен.")
+    print(questions)
     return render_template("contact.html", title="Contact")
 
 
