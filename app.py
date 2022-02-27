@@ -65,6 +65,11 @@ def logout():
         del session["user_logged"]
         return redirect(url_for("index"))
 
+@app.route("/contact", methods=["POST"])
+def ask():
+    flash("Вопрос был отправлен.")
+    return render_template("contact.html", title="Contact")
+
 
 @app.errorhandler(404)
 def notfound(err):

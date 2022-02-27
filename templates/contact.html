@@ -8,19 +8,24 @@
         .contact{
             margin-top: 40px;
         }
+        .flash{
+            margin-left: 0px;
+            color:lightgreen;
+        }
+
     </style>
     
     <div class="container-page">
         <div class="head">
             <h3>Contact us</h3>
-            <h6>Задайте нам вопрос или опишите возникшую проблему</h6>
+            <h5>Задайте нам вопрос или опишите возникшую проблему</h5>
         </div>
-        {% for msg in get_flashed_messages() %}
-            <h4><div class="flash">{{ msg }}</div></h4>
-        {% endfor %}
     
         <section class="contact">
             <div class="container">
+                {% for msg in get_flashed_messages() %}
+                    <h6><div class="flash">{{ msg }}</div></h6>
+                {% endfor %}
                 <form action="contact" method="post">
                     <p>
                         <label for="name">Имя:    </label>
